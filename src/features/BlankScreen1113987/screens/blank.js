@@ -38,7 +38,7 @@ function mapStateToProps(state) {
   return {posts: state.apiReducer.posts};
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     delete: id => dispatch(deletePost(id)),
   };
