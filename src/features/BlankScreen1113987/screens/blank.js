@@ -20,9 +20,11 @@ function Blank(props) {
       {props.posts.map(post => (
         <View>
           <Post key={post.id} post={post} />
-          <Button title="Delete post" onClick={props.delete(post.id)}>
-            <Text>Delete</Text>
-          </Button>
+          <Button
+            key={post.id}
+            title="Delete post"
+            onPress={props.delete(post.id)}
+          />
         </View>
       ))}
     </View>
