@@ -1,23 +1,54 @@
-import React from "react";
-import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
-import { withStyles, Text, Button, CheckBox, Radio, Toggle, Icon, Input, Datepicker } from 'react-native-ui-kitten';
-import Slider from '@react-native-community/slider';
-import { SlideMenuIcon } from "../../../navigator/slideMenuIcon"
+import React, {Component} from 'react';
+import {Text, Button, View, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 
-export class _Blank extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerLeft: <SlideMenuIcon navigationProps={navigation} />,
-    };
-  };
-
-  state = { }
-
-  render = () => <View style={this.props.themedStyle.container}></View>;
+function Post(props) {
+  return (
+    <View style={styles.post}>
+      <Text style={styles.postField}>ID: {props.post.id}</Text>
+      <Text style={styles.postField}>UserID: {props.post.userId}</Text>
+      <Text style={styles.postField}>Title: {props.post.title}</Text>
+      <Text style={styles.postField}>Body: {props.post.body}</Text>
+      {props.children}
+    </View>
+  );
 }
 
-export default Blank = withStyles(_Blank, theme => ({
-  container: {
-    backgroundColor: theme["color-basic-100"]
-  }
-}));
+function Blank(props) {
+  return (
+    <View>
+      {props.posts.map(post => (
+        <View>
+          <Post key={post.id} post={post} />
+          <Button title="Delete post" onClick={props.delete(post.id)}>
+            <Text>Delete</Text>
+          </Button>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  post: {
+    padding: 10,
+  },
+  postField: {
+    padding: 5,
+  },
+});
+
+function mapStateToProps(state) {
+  return {posts: state.apiReducer.posts};
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    delete: postId => dispatch({type: 'DELETE_POST', id: postId}),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Blank);
