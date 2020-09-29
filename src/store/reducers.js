@@ -24,12 +24,15 @@ const initialState = {
 export default function apiReducer(state = initialState, action) {
   switch (action.type) {
     case types.DELETE_POST:
+      console.log(action);
       return state;
     case types.DELETE_POST_SUCCEEDED:
+      console.log(action);
       return Object.assign({}, state, {
-        posts: state.posts.filter(record => record.id != action.response.id),
+        posts: state.posts.filter(record => record.id != action.action.id),
       });
     case types.DELETE_POST_FAILED:
+      console.log(action);
       return Object.assign({}, state, {
         posts: state.posts,
       });

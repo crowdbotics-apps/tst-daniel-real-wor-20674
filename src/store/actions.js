@@ -1,12 +1,13 @@
 import * as types from './constants';
 
-export const deletePost = petId => ({
+export const deletePost = id => ({
   type: types.DELETE_POST,
-  petId,
+  id,
 });
-export const deletePostSucceeded = response => ({
+export const deletePostSucceeded = (response, action) => ({
   type: types.DELETE_POST_SUCCEEDED,
   response,
+  action,
 });
 export const deletePostFailed = error => ({
   type: types.DELETE_POST_FAILED,
