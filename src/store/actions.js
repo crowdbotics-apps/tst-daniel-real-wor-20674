@@ -4,12 +4,13 @@ export const deletePost = id => ({
   type: types.DELETE_POST,
   id,
 });
-export const deletePostSucceeded = (response, action) => ({
+export const deletePostSucceeded = (id, response) => ({
   type: types.DELETE_POST_SUCCEEDED,
+  id,
   response,
-  action,
 });
-export const deletePostFailed = error => ({
+export const deletePostFailed = (id, error) => ({
   type: types.DELETE_POST_FAILED,
+  id,
   error,
 });

@@ -29,7 +29,7 @@ export default function apiReducer(state = initialState, action) {
     case types.DELETE_POST_SUCCEEDED:
       console.log(action);
       return Object.assign({}, state, {
-        posts: state.posts.filter(record => record.id != action.action.id),
+        posts: state.posts.filter(record => record.id != action.id),
       });
     case types.DELETE_POST_FAILED:
       console.log(action);

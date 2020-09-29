@@ -6,9 +6,9 @@ import * as actions from './actions';
 function* deletePostWorker(action) {
   try {
     const result = yield call(apiService.deletePost, action);
-    yield put(actions.deletePostSucceeded(result, action));
+    yield put(actions.deletePostSucceeded(action.id, result));
   } catch (err) {
-    yield put(actions.deletePostFailed(err));
+    yield put(actions.deletePostFailed(action.id, err));
   }
 }
 function* deletePostWatcher() {
