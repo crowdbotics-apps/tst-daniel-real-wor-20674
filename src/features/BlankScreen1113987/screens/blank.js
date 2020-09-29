@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, Button, View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
+import {deletePost} from '../../../store/actions.js';
 
 function Post(props) {
   return (
@@ -9,7 +10,7 @@ function Post(props) {
       <Text style={styles.postField}>UserID: {props.post.userId}</Text>
       <Text style={styles.postField}>Title: {props.post.title}</Text>
       <Text style={styles.postField}>Body: {props.post.body}</Text>
-      {props.children}
+      <Button title="Delete post" onPress={() => props.delete(props.post.id)} />
     </View>
   );
 }
@@ -18,14 +19,7 @@ function Blank(props) {
   return (
     <View>
       {props.posts.map(post => (
-        <View>
-          <Post key={post.id} post={post} />
-          <Button
-            key={post.id}
-            title="Delete post"
-            onPress={props.delete(post.id)}
-          />
-        </View>
+        <Post key={post.id} post={post} delete={props.delete} />
       ))}
     </View>
   );
@@ -44,9 +38,9 @@ function mapStateToProps(state) {
   return {posts: state.apiReducer.posts};
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    delete: postId => dispatch({type: 'DELETE_POST', id: postId}),
+    delete: id => dispatch(deletePost(id)),
   };
 };
 
