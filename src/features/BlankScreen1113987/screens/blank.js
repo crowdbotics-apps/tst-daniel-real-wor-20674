@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, Button, View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {deletePost} from '../../../store/actions.js';
