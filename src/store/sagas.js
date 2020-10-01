@@ -3,12 +3,24 @@ import {apiService} from './services';
 import * as types from './constants';
 import * as actions from './actions';
 
+function* createPostWorker(action) {
+  try {
+    const result = yield call(apiService.createPost, action);
+    yield put(actions.createPostSucceeded(result, action));
+  } catch (err) {
+    yield put(actions.createPostFailed(err, action));
+  }
+}
+function* createPostWatcher() {
+  yield takeEvery(types.CREATE_POST, createPostWorker);
+}
+
 function* deletePostWorker(action) {
   try {
     const result = yield call(apiService.deletePost, action);
-    yield put(actions.deletePostSucceeded(action.id, result));
+    yield put(actions.deletePostSucceeded(result, action));
   } catch (err) {
-    yield put(actions.deletePostFailed(action.id, err));
+    yield put(actions.deletePostFailed(err, action));
   }
 }
 function* deletePostWatcher() {
@@ -16,7 +28,7 @@ function* deletePostWatcher() {
 }
 
 export default function* rootSaga() {
-  const sagas = [deletePostWatcher];
+  const sagas = [deletePostWatcher, createPostWatcher];
   yield all(
     sagas.map(saga =>
       spawn(function*() {

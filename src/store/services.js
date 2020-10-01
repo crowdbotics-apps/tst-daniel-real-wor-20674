@@ -8,7 +8,16 @@ const jsonPlaceHolder = axios.create({
     //api_key: PET_STORE_API_KEY,
   },
 });
-function deletePost(postId) {
-  return jsonPlaceHolder.delete(`/posts/${postId}`);
+
+function createPost(action) {
+  return jsonPlaceHolder.post(`/posts/`, {data: action.data});
 }
-export const apiService = {deletePost};
+
+function deletePost(action) {
+  return jsonPlaceHolder.delete(`/posts/${action.id}`);
+}
+
+export const apiService = {
+  createPost,
+  deletePost,
+};

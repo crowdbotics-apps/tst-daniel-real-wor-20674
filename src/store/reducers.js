@@ -1,6 +1,7 @@
 import * as types from './constants';
 
 const initialState = {
+  postsNextId: 101,
   posts: [
     {
       userId: 1,
@@ -23,16 +24,29 @@ const initialState = {
 
 export default function apiReducer(state = initialState, action) {
   switch (action.type) {
+    case types.CREATE_POST:
+      return state;
+    case types.CREATE_POST_SUCCEEDED:
+      return Object.assign({}, state, {
+        posts: [
+          ...state.posts,
+          {
+            id: state.postsNextId++, //fakes a well behaved API
+            ...action.response.data.data,
+          },
+        ],
+      });
+    case types.CREATE_POST_FAILED:
+      return Object.assign({}, state, {
+        posts: state.posts,
+      });
     case types.DELETE_POST:
-      console.log(action);
       return state;
     case types.DELETE_POST_SUCCEEDED:
-      console.log(action);
       return Object.assign({}, state, {
-        posts: state.posts.filter(record => record.id != action.id),
+        posts: state.posts.filter(record => record.id != action.starter.id),
       });
     case types.DELETE_POST_FAILED:
-      console.log(action);
       return Object.assign({}, state, {
         posts: state.posts,
       });

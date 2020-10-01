@@ -1,29 +1,17 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 
-import SplashScreen from "../features/SplashScreen";
+import SplashScreen from '../features/SplashScreen';
 import SideMenu from './sideMenu';
-//@BlueprintImportInsertion
-import BlankScreen2118040Navigator from '../features/BlankScreen2118040/navigator';
-import BlankScreen1113987Navigator from '../features/BlankScreen1113987/navigator';
-import BlankScreen0113986Navigator from '../features/BlankScreen0113986/navigator';
-
-/**
- * new navigators can be imported here
- */
+import PostsNavigator from '../features/posts/navigator';
 
 const AppNavigator = {
-
-    //@BlueprintNavigationInsertion
-BlankScreen2118040: { screen: BlankScreen2118040Navigator },
-BlankScreen1113987: { screen: BlankScreen1113987Navigator },
-BlankScreen0113986: { screen: BlankScreen0113986Navigator },
-
-    /** new navigators can be added here */
-    SplashScreen: {
-      screen: SplashScreen
-    }
+  Posts: {
+    screen: PostsNavigator,
+  },
+  SplashScreen: {
+    screen: SplashScreen,
+  },
 };
 
 const DrawerAppNavigator = createDrawerNavigator(
@@ -31,7 +19,7 @@ const DrawerAppNavigator = createDrawerNavigator(
     ...AppNavigator,
   },
   {
-    contentComponent: SideMenu
+    contentComponent: SideMenu,
   },
 );
 
