@@ -1,12 +1,12 @@
-import { createStackNavigator } from "react-navigation-stack";
+import {createStackNavigator} from 'react-navigation-stack';
 
-import Blank from "./screens/blank";
+import index from './screens/blank';
 
-export default BlankBlueprintNavigator = createStackNavigator(
+export default (PostsNavigator = createStackNavigator(
   {
-    Blank: { screen: Blank }
+    Posts: {screen: index},
   },
   {
-    initialRouteName: "Blank"
-  }
-);
+    initialRouteName: 'Posts',
+  },
+));

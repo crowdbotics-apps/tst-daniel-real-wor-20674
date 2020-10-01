@@ -3,7 +3,7 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import SplashScreen from '../features/SplashScreen';
 import SideMenu from './sideMenu';
-import PostsNavigator from '../features/posts/navigator';
+import PostsNavigator from '../features/BlankScreen0120547/navigator';
 
 const AppNavigator = {
   Posts: {
