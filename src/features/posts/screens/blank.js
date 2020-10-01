@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, Button, View, SafeAreaView, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
-import {createPost, deletePost} from '../../store/actions';
+import {createPost, deletePost} from '../../../store/actions';
 import {styles} from './styles';
 
 function Post(props) {

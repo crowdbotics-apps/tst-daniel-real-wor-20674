@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation-stack';
 
-import index from './index.js';
+import index from './screens/blank.js';
 
 export default (PostsNavigator = createStackNavigator(
   {
