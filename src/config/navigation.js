@@ -107,6 +107,9 @@ export function navigateAndResetStack(routeName, params) {
   }
 }
 
+// Dynamically generates navigators based on the features installed.
+// This makes this file always functional and doesn't require any special
+// attention from the user or even codegen to modify it.
 let AppNavigator = {};
 features.map(feature => {
   AppNavigator[feature.name] = {
