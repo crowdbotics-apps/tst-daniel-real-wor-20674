@@ -5,7 +5,7 @@ module.exports = function(api) {
     'module:metro-react-native-babel-preset',
     'module:react-native-dotenv',
   ];
-  const plugins = ['wildcard'];
+  const plugins = [];
 
   return {
     presets,
