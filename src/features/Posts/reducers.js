@@ -22,7 +22,7 @@ const initialState = {
   ],
 };
 
-export default function apiReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case types.CREATE_POST:
       return state;

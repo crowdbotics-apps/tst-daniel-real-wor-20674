@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, Button, View, SafeAreaView, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
-import {createPost, deletePost} from '../../../store/actions';
-import {styles} from './styles';
+import {createPost, deletePost} from './actions';
+import styles from './styles';
 
 function Post(props) {
   return (
@@ -31,7 +31,7 @@ function PostList(props) {
 }
 
 function mapStateToProps(state) {
-  return {posts: state.apiReducer.posts};
+  return {posts: state.Posts.posts};
 }
 
 const mapDispatchToProps = dispatch => {

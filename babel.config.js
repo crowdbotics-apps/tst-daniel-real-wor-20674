@@ -1,6 +1,14 @@
-module.exports = function (api) {
-  api.cache(true)
+module.exports = function(api) {
+  api.cache(true);
+
+  const presets = [
+    'module:metro-react-native-babel-preset',
+    'module:react-native-dotenv',
+  ];
+  const plugins = ['wildcard'];
+
   return {
-    "presets": ["module:metro-react-native-babel-preset", "module:react-native-dotenv"]
+    presets,
+    plugins,
   };
-}
+};

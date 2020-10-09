@@ -5,7 +5,6 @@ const jsonPlaceHolder = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    //api_key: PET_STORE_API_KEY,
   },
 });
 
